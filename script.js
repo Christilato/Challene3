@@ -28,27 +28,39 @@ function generatePassword() {
 //WHEN asked for character types to include in the password
 //THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
 //THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-    // ask if they want uppercase?
+    // prompt to ask for uppercase
+    // prompt to ask for lowercase
+    // prompt to ask for special characters
+    // prompt to ask for numerics?
 
   var wantUpper= confirm('Do you want to include uppercase characters in your password?')   
   var wantLower= confirm('Do you want to include lowercase characters in your password?')   
+  var wantSpecialCharacters= confirm('Do you want to include special characters?')
+  var wantNumerics = confirm('Do you want to include numerics in you password?')
 
-    // ask if they want lowercase?
-    // ask if they want special characters
-    // ask if they want numerics?
 
 //WHEN prompted for the length of the password
 //THEN I choose a length of at least 8 characters and no more than 128 characters
-    // ask what the length of the password should be 
-    // answer needs to be between 8 and 128
+    // prompt to ask what the length of the password should be 
+    // let them know the answer needs to be between 8 and 128
+
   var desiredPasswordLength = prompt("How long do you want the password? Must be 8-128 characters");
+
 if((parseInt(desiredPasswordLength) >= 8) && (parseInt(desiredPasswordLength) <= 128)){
 
   if(wantUpper) {
-    availableCharacters = availableCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    availableCharacters = availableCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
   if(wantLower) {
     availableCharacters = availableCharacters + "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
+  }
+
+  if(wantSpecialCharacters){
+    availableCharacters = availableCharacters = "~!@#$%^&*()_+-=[]{}}|;:<>?/.,";
+  }
+
+  if(wantNumerics){
+    availableCharacters = availableCharacters = "1234567890";
   }
 
 for(var i = 0; i < parseInt(desiredPasswordLength); i++) {
