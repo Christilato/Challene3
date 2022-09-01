@@ -33,70 +33,87 @@ function generatePassword() {
     // prompt to ask for special characters//
     // prompt to ask for numerics?//
 
+  var desiredPasswordLength = parseInt(prompt("How long do you want the password? Must be 8-128 characters"));
+// create a statement to check if password length is a number
+if(Number.isNaN(desiredPasswordLength)){
+  alert("passsword length must be a number");
+  return null;
+}
+
+//alerting that it must be atleast 8
+if(desiredPasswordLength < 8){
+  alert("There must be atleast 8");
+  return null;
+} 
+// alerting error if over 128
+if(desiredPasswordLength > 128) {
+  alert("The password cannot be more than 128 characters");
+  return null;
+}
+
   var wantUpper= confirm('Do you want to include uppercase characters in your password?')   
   var wantLower= confirm('Do you want to include lowercase characters in your password?')   
   var wantSpecialCharacters= confirm('Do you want to include special characters?')
   var wantNumerics = confirm('Do you want to include numerics in you password?')
 
+if(
+  wantUpper === false && 
+  wantLower === false &&
+  wantSpecialCharacters === false &&
+  wantNumerics === false 
+) { 
+  alert("Must have atleast one character type");
+  return null;
+}
+  
+// object: password options criteria give true or false 
 
 //WHEN prompted for the length of the password
 //THEN I choose a length of at least 8 characters and no more than 128 characters
     // prompt to ask what the length of the password should be// 
     // let them know the answer needs to be between 8 and 128//
-
-  var desiredPasswordLength = prompt("How long do you want the password? Must be 8-128 characters");
-
-if((parseInt(desiredPasswordLength) >= 8) && (parseInt(desiredPasswordLength) <= 128)){
+ 
 
   if(wantUpper) {
-    availableCharacters = availableCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    availableCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
   if(wantLower) {
     availableCharacters = availableCharacters + "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
   }
 
   if(wantSpecialCharacters){
-    availableCharacters = availableCharacters = "~!@#$%^&*()_+-=[]{}}|;:<>?/.,";
+    availableCharacters = availableCharacters + "~!@#$%^&*()_+-=[]{}}|;:<>?/.,";
   }
 
   if(wantNumerics){
-    availableCharacters = availableCharacters = "1234567890";
+    availableCharacters = availableCharacters + "1234567890";
   }
-
+console.log(availableCharacters);
 for(var i = 0; i < parseInt(desiredPasswordLength); i++) {
 // get a random index based on the length of our character bank and use that to select one from that bank and then concatenate it into a password
+console.log((parseInt(desiredPasswordLength)));
 
 var randomIndex = Math.floor(Math.random()*availableCharacters)
 var randomCharacter = availableCharacters[randomIndex];
 
 completedPassword = completedPassword + randomCharacter
 }
- var validInput = true
- var selectOneCharacter = "1"
 
 //WHEN I answer each prompt
 //THEN my input should be validated and at least one character type should be selected
     // all prompts answered-- verify at least one character type is chosen
 
-  if((parseInt(validInput) = true) && (parseInt(selectOneCharacter) = 1)){
-    validInput =  validInput.availableCharacters();
-    selectOneCharacter = availableCharacters = 1;
-
-  }  
-
-
-
-
+  
 
 //WHEN all prompts are answered
 //THEN a password is generated that matches the selected criteria
     // return completed password
-return completedPassword;
+// return completedPassword;
 
-} else {
-  alert("the length needs to be a number between 8 and 128");
-  return "";
- // generatePassword();
-  //return null;
-  }
+// } else {
+//   alert("the length needs to be a number between 8 and 128");
+//   return "";
+//  // generatePassword();
+//   //return null;
+//   }
 }
