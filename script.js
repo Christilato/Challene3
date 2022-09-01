@@ -65,8 +65,12 @@ if(
   alert("Must have atleast one character type");
   return null;
 }
-  
-// object: password options criteria give true or false 
+ 
+//WHEN I answer each prompt
+//THEN my input should be validated and at least one character type should be selected
+    // all prompts answered-- verify at least one character type is chosen
+
+  // object: password options criteria give true or false 
 
 //WHEN prompted for the length of the password
 //THEN I choose a length of at least 8 characters and no more than 128 characters
@@ -89,31 +93,29 @@ if(
     availableCharacters = availableCharacters + "1234567890";
   }
 console.log(availableCharacters);
+
+
 for(var i = 0; i < parseInt(desiredPasswordLength); i++) {
 // get a random index based on the length of our character bank and use that to select one from that bank and then concatenate it into a password
 console.log((parseInt(desiredPasswordLength)));
 
-var randomIndex = Math.floor(Math.random()*availableCharacters)
+var randomIndex = Math.floor(Math.random()*availableCharacters.length) // string so had to do .length
 var randomCharacter = availableCharacters[randomIndex];
-
+console.log(randomCharacter);
 completedPassword = completedPassword + randomCharacter
 }
-
-//WHEN I answer each prompt
-//THEN my input should be validated and at least one character type should be selected
-    // all prompts answered-- verify at least one character type is chosen
-
-  
+ 
+ console.log(completedPassword);
 
 //WHEN all prompts are answered
 //THEN a password is generated that matches the selected criteria
     // return completed password
-// return completedPassword;
+ return completedPassword;
 
-// } else {
-//   alert("the length needs to be a number between 8 and 128");
-//   return "";
-//  // generatePassword();
-//   //return null;
+//  } else {
+//    alert("the length needs to be a number between 8 and 128");
+//    return "";
+//   // generatePassword();
+//    //return null;
 //   }
 }
